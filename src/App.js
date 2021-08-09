@@ -13,7 +13,7 @@ function App() {
         <h1>Things I Should Do</h1>
       </header>
       <Form inputText={inputText} todos={todos} setTodos={setTodos} setInputText={setInputText} />
-      <TodoList todos={todos} />
+      <TodoList setTodos={setTodos} todos={todos} />
     </div>
   );
 }
