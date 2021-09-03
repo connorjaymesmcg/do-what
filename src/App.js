@@ -9,6 +9,7 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [status, setStatus] = useState('all');
   const [filteredTodos, setFilteredTodos] = useState([]);
+  const [headline, setHeadline] = useState('');
 
   useEffect(() => {
     getLocalTodos();
@@ -17,6 +18,7 @@ function App() {
   useEffect(() => {
     filterHandler();
     saveLocalTodos();
+    headlineChange();
   }, [todos, status]);
 
   // Functions
@@ -31,6 +33,16 @@ function App() {
       default:
         setFilteredTodos(todos);
         break;
+    }
+  };
+
+  const headlineChange = () => {
+    if (status === 'completed') {
+      setHeadline("Things You've Done");
+    } else if (status === 'uncompleted') {
+      setHeadline('Things You Should Do');
+    } else {
+      setHeadline('Set Yourself Some Reminders');
     }
   };
 
@@ -50,7 +62,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Things I Should Do</h1>
+        <h1>{headline}</h1>
       </header>
       <Form inputText={inputText} todos={todos} setTodos={setTodos} setInputText={setInputText} setStatus={setStatus} />
       <TodoList setTodos={setTodos} todos={todos} filteredTodos={filteredTodos} />

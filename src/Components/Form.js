@@ -17,7 +17,7 @@ const Form = ({ setInputText, todos, setTodos, inputText, setStatus }) => {
   };
 
   return (
-    <div>
+    <div className="form-container">
       <form>
         <input value={inputText} onChange={inputTextHandler} type="text" className="todo-input" />
         <button className="todo-button" type="submit" onClick={submitTodoHandler}>
